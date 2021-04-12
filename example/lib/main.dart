@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
@@ -11,9 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late StreamSubscription _intentDataStreamSubscription;
-  List<SharedMediaFile>? _sharedFiles;
-  String? _sharedText;
+  StreamSubscription _intentDataStreamSubscription;
+  List<SharedMediaFile> _sharedFiles;
+  String _sharedText;
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         });
 
     // For sharing or opening urls/text coming from outside the app while the app is closed
-    ReceiveSharingIntent.getInitialText().then((String? value) {
+    ReceiveSharingIntent.getInitialText().then((String value) {
       setState(() {
         _sharedText = value;
         print("Shared: $_sharedText");
